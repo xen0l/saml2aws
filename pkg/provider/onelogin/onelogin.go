@@ -230,7 +230,7 @@ func verifyMFA(oc *Client, oauthToken, appID, resp string) (string, error) {
 	}
 
 	factorID := gjson.Get(resp, fmt.Sprintf("data.0.devices.%d.device_id", option)).String()
-	callbackURL := gjson.Get(resp, "data.0.callback_url").String()
+	callbackURL := "https://api.eu.onelogin.com/api/1/saml_assertion/verify_factor"
 	mfaIdentifer := gjson.Get(resp, fmt.Sprintf("data.0.devices.%d.device_type", option)).String()
 	mfaDeviceID := gjson.Get(resp, fmt.Sprintf("data.0.devices.%d.device_id", option)).String()
 
